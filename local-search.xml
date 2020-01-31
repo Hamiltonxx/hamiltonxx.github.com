@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>Markdown语言</title>
+    <link href="/2020/01/31/Markdown%E8%AF%AD%E8%A8%80/"/>
+    <url>/2020/01/31/Markdown%E8%AF%AD%E8%A8%80/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>2020年的春节过的很不平静，武汉肺炎肆虐全中国，有生以来第一次得宅在家里过年，门都不能出，更休谈拜年聚会活动。有人选择躺床上啥都不动为国做贡献，有人选择在线监工造医院大楼，有人选择房间密码地主麻将，而我和刚过门的媳妇则一起折腾起我们的博客。我们选择的Static Site Generator(SSG)为node系列的hexo,deploy在github page上。为了快速写博客，就不得不先学一下Markdown语言。<br>‘’’If you don’t have a website nowadays, you don’t exist!’’’</p><h2 id="初识Markdown"><a href="#初识Markdown" class="headerlink" title="初识Markdown"></a>初识Markdown</h2><p>Markdown是一门标记语言(Markup Language)。有了它，你只需在写普通文本时加上一些轻量注解，就能使文本按照你所想要的格式展现。标记语言的注解是用来区分文章内容和格式用的。<br>相比于WYSIWYG(所见即所得),标记语言更注重语义信息.你可以标注段落从何开始，标题如何展示等。通过文本和样式的解耦，也方便你生成各式不同的输出(output),如HTML,PDF或其他能理解标记语言的文档。<br>在所有标记语言中，Markdown是最简单的(之一).</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>blog</tag>
+      
+      <tag>technology</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>富爸爸,穷爸爸</title>
     <link href="/2020/01/30/%E5%AF%8C%E7%88%B8%E7%88%B8,%E7%A9%B7%E7%88%B8%E7%88%B8/"/>
     <url>/2020/01/30/%E5%AF%8C%E7%88%B8%E7%88%B8,%E7%A9%B7%E7%88%B8%E7%88%B8/</url>
@@ -25,9 +46,9 @@
   
   
   <entry>
-    <title>My Post Title</title>
-    <link href="/2020/01/12/My-Post-Title/"/>
-    <url>/2020/01/12/My-Post-Title/</url>
+    <title>Codeforces 天梯</title>
+    <link href="/2020/01/12/Codeforces%E5%A4%A9%E6%A2%AF/"/>
+    <url>/2020/01/12/Codeforces%E5%A4%A9%E6%A2%AF/</url>
     
     <content type="html"><![CDATA[<p>Codeforces 天梯</p>]]></content>
     
