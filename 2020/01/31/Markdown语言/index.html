@@ -228,9 +228,13 @@ And this is the second line.</code></pre><h3 id="强调"><a href="#强调" class
             &lt;title&gt;Test&lt;/title&gt;
           &lt;/head&gt;
 
-3.  Update the title to match the name of your website.</code></pre><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>Markdown最初目的是为了使写网页更简便，自然它就有插入超链接的语法。<br><code>This is a link to [my blog](https://hamiltonxx.github.io).</code><br>如果文章里有多处引用同一链接，<br><code>This is a link to [my blog][blog].</code><br>然后，在接下来的文本中，你定义一下该链接指向何处<br><code>[blog]: https://hamiltonxx.github.io</code><br>同样，如果想把链接指向某个段落，只需要把段头放在中括号里<br><code>This is a link to the [Writing Markdown] chapter.</code></p>
-<h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>图片链接和超链接很相似，唯一区别是需要在中括号前加”!”<br><code>![图片名称](图片URL)</code><br>如果图片放在本地<br><code>![图片名称](path-to/my-figure)</code></p>
-<h3 id="水平线"><a href="#水平线" class="headerlink" title="水平线"></a>水平线</h3><p>用三个或更多的asterisks(***),dashes(—)或underscores(___).</p>
+3.  Update the title to match the name of your website.</code></pre><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>Markdown最初目的是为了使写网页更简便，自然它就有插入超链接的语法。</p>
+<pre><code>This is a link to [my blog](https://hamiltonxx.github.io).</code></pre><p>如果文章里有多处引用同一链接，</p>
+<pre><code>This is a link to [my blog][blog].</code></pre><p>然后，在接下来的文本中，你定义一下该链接指向何处</p>
+<pre><code>[blog]: https://hamiltonxx.github.io</code></pre><p>同样，如果想把链接指向某个段落，只需要把段头放在中括号里</p>
+<pre><code>This is a link to the [Writing Markdown] chapter.</code></pre><h3 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h3><p>图片链接和超链接很相似，唯一区别是需要在中括号前加”!”</p>
+<pre><code>![图片名称](图片URL)</code></pre><p>如果图片放在本地</p>
+<pre><code>![图片名称](path-to/my-figure)</code></pre><h3 id="水平线"><a href="#水平线" class="headerlink" title="水平线"></a>水平线</h3><p>用三个或更多的asterisks(***),dashes(—)或underscores(___).</p>
 <pre><code>***
 ---
 ___________</code></pre><h2 id="Markdown扩展语法"><a href="#Markdown扩展语法" class="headerlink" title="Markdown扩展语法"></a>Markdown扩展语法</h2><p>并不是所有的Markdown应用都支持这些扩展语法，用之前得先检查你的应用是否支持。</p>
@@ -276,7 +280,7 @@ ___________</code></pre><h2 id="Markdown扩展语法"><a href="#Markdown扩展�
     <div class="d-none d-lg-block col-lg-2 toc-container">
       
   <div id="toc">
-    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;ディレクトリ</p>
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
     <div id="tocbot"></div>
   </div>
 
@@ -309,7 +313,7 @@ ___________</code></pre><h2 id="Markdown扩展语法"><a href="#Markdown扩展�
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">検索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -318,7 +322,7 @@ ___________</code></pre><h2 id="Markdown扩展语法"><a href="#Markdown扩展�
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
           <label data-error="x" data-success="v"
-                 for="local-search-input">キーワード</label>
+                 for="local-search-input">keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
