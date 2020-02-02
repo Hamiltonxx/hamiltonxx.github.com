@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Hamilton &amp; Lisa">
   <meta name="keywords" content="">
-  <title>Codeforces 天梯 ~ Programming Tale</title>
+  <title>Web抓取领域里的Python工具 ~ Programming Tale</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -107,7 +107,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('http://ww1.sinaimg.cn/large/78df2758gy1gbh2nj7hlvj23jk1zk7wi.jpg')no-repeat center center;
+         style="background: url('http://ww1.sinaimg.cn/large/78df2758gy1gbi3cd8mw9j238o2joquc.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -122,7 +122,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期日, 一月 12日 2020, 7:14 晚上
+                  星期日, 二月 2日 2020, 1:20 下午
                 </p>
               
 
@@ -131,7 +131,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    30 字
+                    646 字
                   </span>&nbsp;
                 
 
@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -172,42 +172,79 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <details>
-  <summary>Codeforces Rating < 1300</summary>
-
-<h4 id="For-beginners-unrated-users-or-users-with-Codeforces-Rating-lt-1300-100-problems"><a href="#For-beginners-unrated-users-or-users-with-Codeforces-Rating-lt-1300-100-problems" class="headerlink" title="For beginners, unrated users or users with Codeforces Rating &lt; 1300. 100 problems."></a>For beginners, unrated users or users with Codeforces Rating &lt; 1300. 100 problems.</h4><table>
-<thead>
-<tr>
-<th>ID</th>
-<th>Problem Name</th>
-<th align="center">Difficulty Level</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td><a href="http://codeforces.com/problemset/problem/69/A" target="_blank" rel="noopener">Young Physicist</a></td>
-<td align="center">1</td>
-</tr>
-<tr>
-<td>2</td>
-<td><a href="http://codeforces.com/problemset/problem/263/A" target="_blank" rel="noopener">Beautiful Matrix</a></td>
-<td align="center">1</td>
-</tr>
-</tbody></table>
-</details>
-
-
-<details>
-  <summary>1300 <= Codeforces Rating <= 1399</summary>
-
-<h2 id="Heading"><a href="#Heading" class="headerlink" title="Heading"></a>Heading</h2><ol>
-<li>A numbered</li>
-<li>list<ul>
-<li>With some</li>
-<li>Sub bullets</details></li>
-</ul>
-</li>
+            <p>Web网页抓取可以通过多种不同的Python框架实现，你有很多选择，每个选择对应不同的需求。<br>最常见的网页抓取Python3工具有以下几个:</p>
+<ol>
+<li>Urllib2</li>
+<li>Requests</li>
+<li>BeautifulSoup</li>
+<li>Lxml</li>
+<li>Selenium</li>
+<li>MechanicalSoup</li>
 </ol>
+<p>所有这些框架/工具中，只有urllib2是Python自带的，其他工具都可以通过pip安装。</p>
+<h2 id="Urllib2"><a href="#Urllib2" class="headerlink" title="Urllib2"></a>Urllib2</h2><p>Urllib2是一个获取url的python模块。它提供了一些很简单的接口来获取诸如HTTP,FTP这些协议的URL。但它对HTTPS无能为力。</p>
+<pre><code>from urllib.request import urlopen
+
+html = urlopen(myURL)
+
+print(html.read())</code></pre><h2 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h2><p>Requests允许你发送 HTTP/1.1 请求。你可以通过简单的Python dictionary发送header,form data,multipart file和其他parameter,通过同样的方式也能获得response data.</p>
+<pre><code>import requests
+req = requests.get(&#39;https://hamiltonxx.github.io&#39;)
+
+print(req.encoding)      
+print(req.status_code)  
+print(req.elapsed)      
+print(req.url)          
+print(req.history)      
+print(req.headers[&#39;Content-Type&#39;])</code></pre><h2 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h2><pre><code>pip install beautifulsoup4</code></pre><p>BeautifulSoup 是一个解析库，它能使用不同的解析器。它默认的解析器来自Python标准库。它能创建一棵能从HTML里提取数据的解析树。它会自动把输入文档转成Unicode，然后输出成UTF-8文档。</p>
+<pre><code>from bs4 import BeautifulSoup
+import requests
+
+r = requests.get(&quot;https://hamiltonxx.github.io&quot;)
+
+soup = BeautifulSoup(r.text)
+
+for link in soup.find_all(&#39;a&#39;):
+  print(link.get(&#39;href&#39;))</code></pre><h2 id="Lxml"><a href="#Lxml" class="headerlink" title="Lxml"></a>Lxml</h2><p>Lxml是一个高性能、高质量的HTML和XML解析库。如果你想要速度，就用Lxml. Lxml有很多模块，其中一个最重要的模块是etree, 负责创建和组织所有这些元素。</p>
+<pre><code>from lxml import etree
+
+root_elem = etree.Element(&#39;html&#39;)
+etree.SubElement(root_elem, &#39;head&#39;)
+etree.SubElement(root_elem, &#39;title&#39;)
+etree.SubElement(root_elem, &#39;body&#39;)
+
+print(etree.tostring(root_elem, pretty_print=True).decode(&#39;utf-8&#39;))</code></pre><h2 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h2><p>有一些网站使用javascript来提供内容。比如，你需要往下滚页面或点击按钮，来加载更多的内容。这种情况就需要selenium.</p>
+<pre><code>from selenium import webdriver
+path_to_chromedriver = &#39;/Users/Admin/Desktop/chromedriver&#39;
+browser = webdriver.Chrome(executable_path = path_to_chromedriver)
+
+url = &#39;https://hamiltonxx.github.io&#39;
+browser.get(url)</code></pre><h2 id="MechanicalSoup"><a href="#MechanicalSoup" class="headerlink" title="MechanicalSoup"></a>MechanicalSoup</h2><p>MechanicalSoup库可以使和网站的交互自动化。它自动存储和发送cookie,跟踪重定向和链接以及提交表单。</p>
+<pre><code>import mechanicalsoup
+
+browser = mechanicalsoup.StatefulBrowser()
+value = browser.open(&#39;https://hamiltonxx.github.io&#39;)
+print(value)
+
+value1 = browser.get_url()
+print(value1)
+
+value2 = browser.follow_link(&quot;forms&quot;)
+print(value2)
+
+value = browser.get_url()
+print(value)</code></pre><h2 id="Scrapy"><a href="#Scrapy" class="headerlink" title="Scrapy"></a>Scrapy</h2><p>Scrapy是一个提前所需网站信息的爬虫框架。它可以管理请求、保存session、处理输出管道。</p>
+<pre><code>import scrapy
+
+class HamiltonSpider(scrapy.Spider):
+  name = &quot;hami_spider&quot;
+  start_urls = [&#39;https://hamiltonxx.github.io&#39;]
+
+  def parse(self, response):
+    SET_SELECTOR = &#39;hamilton&#39;
+    for hami in response.css(SET_SELECTOR):
+      pass</code></pre><p>用下面这命令来运行scrapy代码</p>
+<pre><code>scrapy runspider samplescapy.py</code></pre><p>以上就是常用的一些python3爬虫库。</p>
 
             <hr>
           </div>
@@ -219,9 +256,9 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/coding">coding</a>
+                  <a class="hover-with-bg" href="/tags/Python">Python</a>
                 
-                  <a class="hover-with-bg" href="/tags/python">python</a>
+                  <a class="hover-with-bg" href="/tags/%E7%88%AC%E8%99%AB">爬虫</a>
                 
               </span>
             
@@ -377,7 +414,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Codeforces 天梯&nbsp;",
+        "Web抓取领域里的Python工具&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
