@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="Hamilton &amp; Lisa">
   <meta name="keywords" content="">
-  <title>アーカイブ ~ Programming Tale</title>
+  <title>RxJS入门之环境搭建 ~ Programming Tale</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -39,7 +39,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -107,7 +107,7 @@
 </nav>
 
     <div class="view intro-2" id="background"
-         style="background: url('/img/default.png')no-repeat center center;
+         style="background: url('http://ww1.sinaimg.cn/large/78df2758gy1gbo3v9xvmmj22eo1lsk6m.jpg')no-repeat center center;
            background-size: cover;
            background-attachment: fixed;">
       <div class="full-bg-img">
@@ -117,6 +117,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 二月 3日 2020, 9:54 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    0 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -128,77 +163,63 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">合計 8 件のポスト</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/02/07/Sass%E5%85%A5%E9%97%A8/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Sass入门</span>
-      <span style="float: right;">02-07</span>
-    </a>
-  
-    
-    <a href="/2020/02/03/RxJS%E5%85%A5%E9%97%A8%E4%B9%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">RxJS入门之环境搭建</span>
-      <span style="float: right;">02-03</span>
-    </a>
-  
-    
-    <a href="/2020/02/02/Web%E6%8A%93%E5%8F%96%E9%A2%86%E5%9F%9F%E9%87%8C%E7%9A%84Python%E5%B7%A5%E5%85%B7/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Web抓取领域里的Python工具</span>
-      <span style="float: right;">02-02</span>
-    </a>
-  
-    
-    <a href="/2020/01/31/Markdown%E8%AF%AD%E8%A8%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Markdown语言</span>
-      <span style="float: right;">01-31</span>
-    </a>
-  
-    
-    <a href="/2020/01/31/%E3%80%8AM%E5%9E%8B%E7%A4%BE%E4%BC%9A%E3%80%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">《M型社会》</span>
-      <span style="float: right;">01-31</span>
-    </a>
-  
-    
-    <a href="/2020/01/30/%E5%AF%8C%E7%88%B8%E7%88%B8,%E7%A9%B7%E7%88%B8%E7%88%B8/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">富爸爸,穷爸爸</span>
-      <span style="float: right;">01-30</span>
-    </a>
-  
-    
-    <a href="/2020/01/12/Codeforces%E5%A4%A9%E6%A2%AF/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Codeforces 天梯</span>
-      <span style="float: right;">01-12</span>
-    </a>
-  
-    
-    <a href="/2020/01/12/hello-world/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hello World</span>
-      <span style="float: right;">01-12</span>
-    </a>
-  
-</div>
 
-
-              </div>
-            </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/technology">technology</a>
+                
+                  <a class="hover-with-bg" href="/tags/angular">angular</a>
+                
+                  <a class="hover-with-bg" href="/tags/javascript">javascript</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;ディレクトリ</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -277,6 +298,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -317,7 +343,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "アーカイブ&nbsp;",
+        "RxJS入门之环境搭建&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
