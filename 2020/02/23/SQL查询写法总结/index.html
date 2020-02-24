@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="Hamilton &amp; Lisa">
+  <meta name="keywords" content="">
+  <title>SQL查询写法总结 ~ Programming Tale</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Programming Tale</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('http://ww1.sinaimg.cn/large/78df2758gy1gc7j36lpjfj23402c0u0x.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期日, 二月 23日 2020, 9:38 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.5k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      7 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SQL应该不用再多做介绍了。如果没听说过不了解SQL，可以看这个W3School教程<a href="https://www.w3schools.com/sql/sql_intro.asp" target="_blank" rel="noopener">https://www.w3schools.com/sql/sql_intro.asp</a>. 本文和大多数教程不一样，不阐述、不解释、不运行。只对SQL的用法作总结罗列和示例。方便记忆和快速查询。</p>
+<h2 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h2><pre><code>SELECT column1, column2,... FROM table_name;
+SELECT * FROM table_name;</code></pre><h2 id="Select-Distinct"><a href="#Select-Distinct" class="headerlink" title="Select Distinct"></a>Select Distinct</h2><pre><code>SELECT DISTINCT column1, column2,... FROM table_name;</code></pre><h2 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h2><pre><code>SELECT column1, column2,... FROM table_name WHERE condition;
+
+SELECT * FROM Customers WHERE Country=&#39;Mexico&#39;;</code></pre><p>Where从句中的Operator有 =,&gt;,&lt;,&gt;=,&lt;=,&lt;&gt;(或!=),BETWEEN,LIKE,IN</p>
+<h2 id="And-Or-Not"><a href="#And-Or-Not" class="headerlink" title="And, Or, Not"></a>And, Or, Not</h2><pre><code>SELECT column1, column2,... FROM table_name WHERE condition1 AND condition2 AND condition3 ...;
+SELECT column1, column2,... FROM table_name WHERE condition1 OR condition2 OR condition3 ...;
+SELECT column1, column2,... FROM table_name WHERE NOT condition;
+
+SELECT * FROM Customers WHERE Country=&#39;Germany&#39; AND City=&#39;Berlin&#39;;
+SELECT * FROM Customers WHERE City=&#39;Berlin&#39; OR City=&#39;Munchen&#39;;
+SELECT * FROM Customers WHERE NOT Country=&#39;Germany&#39;;</code></pre><h2 id="Order-By"><a href="#Order-By" class="headerlink" title="Order By"></a>Order By</h2><pre><code>SELECT column1, column2,... FROM table_name ORDER BY column1, column2, ... ASC|DESC;
+
+SELECT * FROM Customers ORDER BY Country,CustomerName;
+SELECT * FROM Customers ORDER BY Country DESC;</code></pre><h2 id="Insert-Into"><a href="#Insert-Into" class="headerlink" title="Insert Into"></a>Insert Into</h2><pre><code>INSERT INTO table_name(column1,column2,column3,...) VALUES(value1,value2,value3,...);
+INSERT INTO table_name VALUES(value1,value2,value3,...);</code></pre><h2 id="NULL值"><a href="#NULL值" class="headerlink" title="NULL值"></a>NULL值</h2><pre><code>SELECT column_names FROM table_name WHERE column_name IS NULL;
+SELECT column_names FROM table_name WHERE column_name IS NOT NULL;</code></pre><h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><pre><code>UPDATE table_name SET column1=value1, column2=value2,... WHERE condition;
+
+UPDATE Customers SET ContactName=&#39;Juan&#39; WHERE Country=&#39;Mexico&#39;;</code></pre><h2 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h2><pre><code>DELETE FROM table_name WHERE condition;
+
+DELETE FROM Customers WHERE CustomerName=&#39;Alfreds Futterkiste&#39;;
+DELETE FROM Customers;</code></pre><h2 id="Select-Limit"><a href="#Select-Limit" class="headerlink" title="Select Limit"></a>Select Limit</h2><pre><code>SELECT column_names FROM table_name WHERE condition LIMIT number;</code></pre><h2 id="Min-and-Max"><a href="#Min-and-Max" class="headerlink" title="Min and Max"></a>Min and Max</h2><pre><code>SELECT MIN(column_name) FROM table_name WHERE condition;
+SELECT MAX(column_name) FROM table_name WHERE condition;
+
+SELECT MIN(Price) as SmallestPrice FROM Products;
+SELECT MAX(Price) as LargestPrice FROM Products;</code></pre><h2 id="Count-Avg-Sum"><a href="#Count-Avg-Sum" class="headerlink" title="Count, Avg, Sum"></a>Count, Avg, Sum</h2><blockquote>
+<p>NULL值不被COUNT, 也不被AVG和SUM计算。</p>
+</blockquote>
+<pre><code>SELECT COUNT(column_name) FROM table_name WHERE condition;
+SELECT AVG(column_name) FROM table_name WHERE condition;
+SELECT SUM(column_name) FROM table_name WHERE condition;
+
+SELECT COUNT(ProductID) FROM Products;
+SELECT AVG(Price) FROM Products;
+SELECT SUM(Quantity) FROM OrderDetails;</code></pre><h2 id="Like"><a href="#Like" class="headerlink" title="Like"></a>Like</h2><blockquote>
+<p>% 代表0个、1个或多个字符<br>_ 代表1个字符</p>
+</blockquote>
+<pre><code>SELECT column1, column2,... FROM table_name WHERE columnN LIKE pattern;
+
+SELECT * FROM Customers WHERE CustomerName LIKE &#39;%or%&#39;;</code></pre><h2 id="In"><a href="#In" class="headerlink" title="In"></a>In</h2><blockquote>
+<p>IN操作符可以看作是OR conditions的简写。</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table_name WHERE column_name IN (value1,value2,...);
+SELECT column_names FROM table_name WHERE column_name IN (SELECT STATEMENT);
+
+SELECT * FROM Customers WHERE Country NOT IN (&#39;Germany&#39;,&#39;France&#39;,&#39;UK&#39;);
+SELECT * FROM Customers WHERE Country IN (SELECT Country FROM Suppliers);</code></pre><h2 id="Between"><a href="#Between" class="headerlink" title="Between"></a>Between</h2><blockquote>
+<p>选出一个范围内的值，这个值可以是数字、文本或日期。</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table_name WHERE column_name BETWEEN value1 AND value2;
+
+SELECT * FROM Products WHERE Price BETWEEN 10 AND 20 AND CategoryID NOT IN (1,2,3);
+SELECT * FROM Products WHERE ProductName NOT BETWEEN &#39;Carnarvon Tigers&#39; AND &#39;Mozzarella di Giovanni&#39; ORDER BY ProductName;
+SELECT * FROM Orders WHERE OrderDate BETWEEN &#39;1996-07-01&#39; AND &#39;1996-07-31&#39;;</code></pre><h2 id="Aliases"><a href="#Aliases" class="headerlink" title="Aliases"></a>Aliases</h2><pre><code>SELECT column_name AS alias_name FROM table_name;
+SELECT column_names FROM table_name AS alias_name;
+
+SELECT CustomerName, CONCAT(Address,&#39;, &#39;,PostalCode,&#39;, &#39;,City,&#39;, &#39;,Country) AS Address FROM Customers;
+SELECT o.OrderID,o.OrderDate,c.CustomerName FROM Customers AS c, Orders AS o WHERE c.CustomerName=&quot;Around the Horn&quot; AND c.CustomerID=o.CustomerID;</code></pre><h2 id="Joins"><a href="#Joins" class="headerlink" title="Joins"></a>Joins</h2><blockquote>
+<p>INNER JOIN 选出两个表里都匹配的值</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table1 INNER JOIN table2 ON table1.column_name=table2.column_name;
+
+SELECT Orders.OrderID, Customers.CustomerName FROM Orders INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName FROM ((Orders INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID) INNER JOIN Shippers ON Orders.ShipperID=Shippers.ShipperID);</code></pre><blockquote>
+<p>LEFT JOIN 选出左边表里所有记录和右边表里的匹配记录，右边如果没有匹配则显示NULL。</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table1 LEFT JOIN table2 ON table1.column_name=table2.column_name;
+
+SELECT Customers.CustomerName, Orders.OrderID FROM Customers LEFT JOIN Orders ON Customers.CustomerID=Orders.CustomerID ORDER BY Customers.CustomerName;</code></pre><blockquote>
+<p>RIGHT JOIN 选出右边表里的所有记录和左边表里的匹配记录，左边如果没有匹配则显示NULL。</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table1 RIGHT JOIN table2 ON table1.column_name=table2.column_name;
+
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName FROM Orders RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID ORDER BY Orders.OrderID;</code></pre><blockquote>
+<p>FULL JOIN 即 FULL OUTER JOIN,选出两个表里匹配的所有记录，注意这个返回的结果集会非常大。</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table1 FULL OUTER JOIN table2 ON table1.column_name=table2.column_name WHERE condition;</code></pre><blockquote>
+<p>SELF JOIN,table和自己join. 如示例选出在同一城市里的customers.</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table1 T1, table1 T2 WHERE condition;
+
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City FROM Customers A, Customers B WHERE A.CustomerID&lt;&gt;B.CustomerID AND A.City=B.City ORDER BY A.City;</code></pre><h2 id="Union"><a href="#Union" class="headerlink" title="Union"></a>Union</h2><blockquote>
+<p>UNION用来合并结果集，两个结果集必须1.有相同的列数；2.列的数据类型相似；3.列的顺序一致<br>UNION只选出不重复值，UNION可以选出重复值。</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table1 UNION SELECT column_names FROM table2;
+
+SELECT City FROM Customers UNION SELECT City FROM Suppliers ORDER BY City;
+SELECT City FROM Customers UNION ALL SELECT City FROM Suppliers ORDER BY City;
+SELECT City,Country FROM Customers WHERE Country=&#39;Germany&#39; UNION SELECT City,Country FROM Suppliers WHERE Country=&#39;Germany&#39; ORDER BY City;</code></pre><h2 id="Group-By"><a href="#Group-By" class="headerlink" title="Group By"></a>Group By</h2><blockquote>
+<p>GROUP BY通常和聚合函数(COUNT,MAX,MIN,SUM,AVG)一起使用</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table_name WHERE condition GROUP BY column_names ORDER BY column_names;
+
+SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country;
+SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country ORDER BY COUNT(CustomerID) DESC;
+SELECT Shippers.ShipperName, COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders LEFT JOIN Shippers ON Orders.ShipperID=Shippers.ShipperID GROUP BY ShipperName;</code></pre><blockquote>
+<p>最后这条列出了每个快递商运送的订单数。</p>
+</blockquote>
+<h2 id="Having"><a href="#Having" class="headerlink" title="Having"></a>Having</h2><blockquote>
+<p>WHERE关键字不能用于聚合函数，此时用HAVING</p>
+</blockquote>
+<pre><code>SELECT column_names FROM table_name WHERE condition GROUP BY column_names HAVING condition ORDER BY column_name;
+
+SELECT COUNT(CustomerID),Country FROM Customers GROUP BY Country HAVING COUNT(CustomerID)&gt;5;
+SELECT COUNT(CustomerID),Country FROM Customers GROUP BY Country HAVING COUNT(CustomerID)&gt;5 ORDER BY COUNT(CustomerID) DESC;
+SELECT Employees.LastName,COUNT(Orders.OrderID) AS NumberOfOrders FROM (Orders INNER JOIN Employees ON Orders.EmployeeID=Employees.EmployeeID) GROUP BY LastName HAVING COUNT(Orders.OrderID&gt;10;</code></pre><blockquote>
+<p>最后两个示例，一为列出每个国家的customer数，这个数字须大于5；二为列出employee中有超过10个订单的人的姓和订单数。</p>
+</blockquote>
+<h2 id="Exists"><a href="#Exists" class="headerlink" title="Exists"></a>Exists</h2><pre><code>SELECT column_names FROM table_name WHERE EXISTS (SELECT column_name FROM table_name WHERE condition);
+
+SELECT SupplierName FROM Suppliers WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID=Suppliers.SupplierID AND Price&lt;20);</code></pre><blockquote>
+<p>示例为列出有产品价少于20的供应商</p>
+</blockquote>
+<h2 id="Any-All"><a href="#Any-All" class="headerlink" title="Any, All"></a>Any, All</h2><pre><code>SELECT column_names FROM table_name WHERE column_name OPERATOR ANY (SELECT column_name FROM table_name WHERE condition);
+SELECT column_names FROM table_name WHERE column_name OPERATOR ALL (SELECT column_name FROM table_name WHERE condition);
+
+SELECT ProductName FROM Products WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails WHERE Quantity=10);
+SELECT ProductName FROM Products WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails WHERE Quantity&gt;99);
+SELECT ProductName FROM Products WHERE ProductID = ALL (SELECT ProductID FROM OrderDetails WHERE Quantity=10);</code></pre><blockquote>
+<p>这里的OPERATOR必须是比较操作符 (=,&lt;&gt;,!=,&gt;,&gt;=,&lt;,&lt;=)<br>第二个示例为列出产品名字，它在OrderDetails表中有一个记录quantity&gt;99</p>
+</blockquote>
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><pre><code>--SELECT * FROM Customers;
+SELECT * FROM Products;
+
+SELECT * From Customers -- WHERE City=&#39;Berlin&#39;;</code></pre><h2 id="Select-Into-lt-略-gt"><a href="#Select-Into-lt-略-gt" class="headerlink" title="Select Into &lt;略&gt;"></a>Select Into &lt;略&gt;</h2><h2 id="Insert-Into-Select-lt-略-gt"><a href="#Insert-Into-Select-lt-略-gt" class="headerlink" title="Insert Into Select &lt;略&gt;"></a>Insert Into Select &lt;略&gt;</h2><h2 id="Case-lt-略-gt"><a href="#Case-lt-略-gt" class="headerlink" title="Case &lt;略&gt;"></a>Case &lt;略&gt;</h2><h2 id="IFNULL-lt-略-gt"><a href="#IFNULL-lt-略-gt" class="headerlink" title="IFNULL &lt;略&gt;"></a>IFNULL &lt;略&gt;</h2><h2 id="Stored-Procedures-lt-略-gt"><a href="#Stored-Procedures-lt-略-gt" class="headerlink" title="Stored Procedures &lt;略&gt;"></a>Stored Procedures &lt;略&gt;</h2>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/technology">technology</a>
+                
+                  <a class="hover-with-bg" href="/tags/mysql">mysql</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  ');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "SQL查询写法总结&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

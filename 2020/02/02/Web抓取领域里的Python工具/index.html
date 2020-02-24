@@ -131,7 +131,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    684 字
+                    874 字
                   </span>&nbsp;
                 
 
@@ -139,7 +139,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -245,7 +245,35 @@ class HamiltonSpider(scrapy.Spider):
     for hami in response.css(SET_SELECTOR):
       pass</code></pre><p>用下面这命令来运行scrapy代码</p>
 <pre><code>scrapy runspider samplescapy.py</code></pre><p>以上就是常用的一些python3爬虫库。最最常用的库莫过于BeautifulSoup和Scrapy,后续我们将再详细讲这两个框架的异同以及各自怎么应用开发。</p>
+<h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>爬取<a href="https://www.a2oj.com/Ladders.html" target="_blank" rel="noopener">https://www.a2oj.com/Ladders.html</a>网站或<a href="https://hamiltonxx.github.io/2020/01/12/Codeforces天梯/" target="_blank" rel="noopener">https://hamiltonxx.github.io/2020/01/12/Codeforces天梯/</a> 的题目和链接做成table</p>
+<h3 id="参考答案"><a href="#参考答案" class="headerlink" title="参考答案"></a>参考答案</h3><pre><code>from bs4 import BeautifulSoup 
+import requests 
 
+with open(&quot;beginner.md&quot;,&quot;a&quot;) as f:
+    for j in range(22,33):
+        f.write(&#39;&lt;details&gt;\n&#39;)
+        f.write(&#39;&lt;summary&gt;Codeforces Rating&lt;/summary&gt;\n\n&#39;)
+        f.write(&#39;#### 200 problems.\n\n&#39;)
+
+        r = requests.get(&#39;https://www.a2oj.com/Ladder&#39;+str(j)+&#39;.html&#39;)
+        soup = BeautifulSoup(r.text)
+
+        trs = soup.find_all(&#39;tr&#39;)
+
+        f.write(&#39;|ID|Problem Name|Difficulty Level|\n&#39;)
+        f.write(&#39;|---|---|:---:|\n&#39;)
+
+        for i in range(4,204):
+            tr = trs[i]
+            id = tr.td.text
+            name = tr.a.text
+            url = tr.a[&quot;href&quot;]
+            dl = tr.find_all(&#39;td&#39;)[-1].text 
+
+            f.write(&#39;|&#39;+id+&#39;|[&#39;+name+&#39;](&#39;+url+&#39;)|&#39;+dl+&#39;|\n&#39;)
+
+        f.write(&#39;\n&#39;)
+        f.write(&#39;&lt;/details&gt;\n\n&#39;)</code></pre>
             <hr>
           </div>
           <br>
